@@ -18,8 +18,12 @@ use App\Http\Controllers\Dashboard\DashboardController;
 Route::get('/Dashboard-Admin', [DashboardController::class, 'index']);
 
 Route::get('/dashboard/user', function () {
-    return view('Dashboard.user.dashboard');
+    return view('Dashboard.User.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard.user');
+
+Route::get('/dashboard/admin', function () {
+    return view('Dashboard.Admin.dashboard');
+})->middleware(['auth:admin', 'verified'])->name('dashboard.admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -27,4 +31,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
