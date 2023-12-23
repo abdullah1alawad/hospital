@@ -12,27 +12,31 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
-    Route::post('register/admin', [AdminController::class, 'store']);
+    Route::post('register/admin', [AdminController::class, 'register']);
 
+
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
 
     ###############################route user ###################################
 
-    Route::get('/user/login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
 
     Route::post('login/user', [AuthenticatedSessionController::class, 'store'])
         ->name('login.user');
+
 
     ################################end route user###############################
 
     ##################################route admin################################
     Route::post('login/admin', [AdminController::class, 'store'])
         ->name('login.admin');
+
 
     #################################end route admin############################
 
@@ -47,6 +51,12 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+});
+
+Route::middleware('auth:admin')->group(function () {
+
+    Route::post('logout/admin', [AdminController::class, 'destroy'])
+        ->name('logout.admin');
 });
 
 Route::middleware('auth')->group(function () {
@@ -68,6 +78,7 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
+    Route::post('logout/user', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout.user');
+
 });

@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class AdminController extends Controller
 {
@@ -24,12 +25,14 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     public function register(Request $request)
     {
+        csrf_field();
         Admin::create([
+            'name' => 'abdullah',
             'email' => 'abdullahalawad23@gmail.com',
             'password' => 'abd12345'
         ]);
@@ -40,11 +43,11 @@ class AdminController extends Controller
      */
     public function store(adminLoginRequest $request)
     {
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::ADMIN);
+        if ($request->authenticate()) {
+            $request->session()->regenerate();
+            return redirect()->intended(RouteServiceProvider::ADMIN);
+        }
+        return redirect()->back()->withErrors(['name' => (trans('Dashboard/auth.failed'))]);
     }
 
     /**
