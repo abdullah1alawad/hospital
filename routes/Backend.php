@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -22,9 +23,6 @@ Route::get('/test', function () {
     return $hash;
 });
 
-Route::get()
-
-Route::get('/Dashboard-Admin', [DashboardController::class, 'index']);
 
 Route::group(
     [
@@ -32,20 +30,27 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
 
-        //---------------------------user dashboard---------------------------
+    //---------------------------user dashboard---------------------------
     Route::get('/dashboard/user', function () {
         return view('Dashboard.User.dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard.user');
 
-        //---------------------------end user dashboard------------------------
+    //---------------------------end user dashboard------------------------
 
-        //---------------------------admin dashboard-----------------------------
+    //---------------------------admin dashboard-----------------------------
 
     Route::get('/dashboard/admin', function () {
         return view('Dashboard.Admin.dashboard');
     })->middleware(['auth:admin', 'verified'])->name('dashboard.admin');
 
-        //---------------------------end admin dashboard-----------------------
+    //---------------------------end admin dashboard-----------------------
+
+    Route::middleware(['auth:admin'])->group(function (){
+        //---------------------------sections route ------------------------------
+        Route::resource('Sections',SectionController::class);
+        //---------------------------end sections route -----------------------------
+    });
+
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -56,6 +61,5 @@ Route::group(
     require __DIR__ . '/auth.php';
 
 });
-
 
 

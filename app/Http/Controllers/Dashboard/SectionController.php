@@ -3,16 +3,24 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\Sections\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
+    private $sections;
+
+    public function __construct(SectionRepositoryInterface $sectionsRepository)
+    {
+        $this->sections = $sectionsRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return $this->sections->index();
     }
 
     /**
@@ -28,7 +36,7 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->sections->store($request);
     }
 
     /**
@@ -50,16 +58,16 @@ class SectionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        return $this->sections->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->sections->destroy($request);
     }
 }
