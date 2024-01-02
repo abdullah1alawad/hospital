@@ -17,5 +17,11 @@ class Doctor extends Model
         'password',
         'phone', 'price',
         'name', 'appointments',
+        'section_id',
     ];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

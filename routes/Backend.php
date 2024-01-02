@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -45,10 +46,16 @@ Route::group(
 
     //---------------------------end admin dashboard-----------------------
 
-    Route::middleware(['auth:admin'])->group(function (){
+    Route::middleware(['auth:admin'])->group(function () {
         //---------------------------sections route ------------------------------
-        Route::resource('Sections',SectionController::class);
+        Route::resource('Sections', SectionController::class);
         //---------------------------end sections route -----------------------------
+
+        //---------------------------Doctor route--------------------------------------
+
+        Route::resource('Doctor', DoctorController::class);
+
+        //---------------------------end doctor route-----------------------------------
     });
 
 
