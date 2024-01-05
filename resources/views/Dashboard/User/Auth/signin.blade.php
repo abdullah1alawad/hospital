@@ -37,30 +37,30 @@
                                         <h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Va<span>le</span>x</h1></div>
                                     <div class="card-sigin">
                                         <div class="main-signup-header">
-                                            <h2>{{trans('Dashboard/login_trans.welcome_back')}}</h2>
-                                            <h5 class="font-weight-semibold mb-4">{{trans('Dashboard/login_trans.please_sign_in_to_continue')}}</h5>
+                                            <h2>{{trans('login_trans.welcome_back')}}</h2>
+                                            <h5 class="font-weight-semibold mb-4">{{trans('login_trans.please_sign_in_to_continue')}}</h5>
 
                                             <div class="form-group">
                                                 <label
-                                                    for="exampleFormControlSelect1">{{trans('Dashboard/login_trans.choose_role')}}</label>
+                                                    for="exampleFormControlSelect1">{{trans('login_trans.choose_role')}}</label>
                                                 <select class="form-control" id="sectionChooser">
                                                     <option value="" selected
-                                                            disabled>  {{trans('Dashboard/login_trans.choose_role')}}</option>
+                                                            disabled>  {{trans('login_trans.choose_role')}}</option>
                                                     <option
-                                                        value="user">{{trans('Dashboard/login_trans.signin_as_patient')}}</option>
+                                                        value="user">{{trans('login_trans.signin_as_patient')}}</option>
                                                     <option
-                                                        value="admin">{{trans('Dashboard/login_trans.signin_as_admin')}}</option>
+                                                        value="admin">{{trans('login_trans.signin_as_admin')}}</option>
                                                 </select>
                                             </div>
 
                                             {{--                                                          user login--}}
 
                                             <div class="login-form" id="user">
-                                                <h5 class="font-weight-semibold mb-4">{{trans('Dashboard/login_trans.signin_as_patient')}}</h5>
+                                                <h5 class="font-weight-semibold mb-4">{{trans('login_trans.signin_as_patient')}}</h5>
                                                 <form method="POST" action="{{ route('login.user') }}">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label>{{trans('Dashboard/login_trans.email')}}</label> <input
+                                                        <label>{{trans('login_trans.email')}}</label> <input
                                                             class="form-control" name="email"
                                                             placeholder="Enter your email"
                                                             type="email" :value="old('email')"
@@ -68,7 +68,7 @@
                                                             autocomplete="username">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>{{trans('Dashboard/login_trans.password')}}</label>
+                                                        <label>{{trans('login_trans.password')}}</label>
                                                         <input class="form-control"
                                                                placeholder="Enter your password"
                                                                type="password" name="password"
@@ -76,27 +76,27 @@
                                                                autocomplete="current-password">
                                                     </div>
                                                     <button class="btn btn-main-primary btn-block"
-                                                            type="submit">{{trans('Dashboard/login_trans.signin')}}
+                                                            type="submit">{{trans('login_trans.signin')}}
                                                     </button>
                                                     <div class="row row-xs">
                                                         <div class="col-sm-6">
                                                             <button class="btn btn-block"><i
                                                                     class="fab fa-facebook-f"></i>
-                                                                {{trans('Dashboard/login_trans.signup_with_facebook')}}
+                                                                {{trans('login_trans.signup_with_facebook')}}
                                                             </button>
                                                         </div>
                                                         <div class="col-sm-6 mg-t-10 mg-sm-t-0">
                                                             <button class="btn btn-info btn-block"><i
-                                                                    class="fab fa-twitter"></i>{{trans('Dashboard/login_trans.signup_with_twitter')}}
+                                                                    class="fab fa-twitter"></i>{{trans('login_trans.signup_with_twitter')}}
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div class="main-signin-footer mt-5">
-                                                    <p><a href="">{{trans('Dashboard/login_trans.forget_password')}}</a>
+                                                    <p><a href="">{{trans('login_trans.forget_password')}}</a>
                                                     </p>
-                                                    <p> {{trans('Dashboard/login_trans.dont_have_an_account')}}<a
-                                                            href="{{ url('/' . $page='signup') }}">{{trans('Dashboard/login_trans.create_an_account')}}
+                                                    <p> {{trans('login_trans.dont_have_an_account')}}<a
+                                                            href="{{ url('/' . $page='signup') }}">{{trans('login_trans.create_an_account')}}
                                                         </a></p>
                                                 </div>
                                             </div>
@@ -116,12 +116,12 @@
                                             {{--                                            admin login--}}
 
                                             <div class="login-form" id="admin">
-                                                <h5 class="font-weight-semibold mb-4"> {{trans('Dashboard/login_trans.signin_as_admin')}}
+                                                <h5 class="font-weight-semibold mb-4"> {{trans('login_trans.signin_as_admin')}}
                                                 </h5>
                                                 <form method="POST" action="{{ route('login.admin') }}">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label>{{trans('Dashboard/login_trans.email')}}</label>
+                                                        <label>{{trans('login_trans.email')}}</label>
                                                         <input class="form-control" name="email"
                                                                placeholder="Enter your email"
                                                                type="email" :value="old('email')"
@@ -129,7 +129,7 @@
                                                                autocomplete="username">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>{{trans('Dashboard/login_trans.password')}}</label>
+                                                        <label>{{trans('login_trans.password')}}</label>
                                                         <input class="form-control"
                                                                placeholder="Enter your password"
                                                                type="password" name="password"
@@ -137,28 +137,28 @@
                                                                autocomplete="current-password">
                                                     </div>
                                                     <button class="btn btn-main-primary btn-block"
-                                                            type="submit">{{trans('Dashboard/login_trans.signin')}}
+                                                            type="submit">{{trans('login_trans.signin')}}
                                                     </button>
                                                     <div class="row row-xs">
                                                         <div class="col-sm-6">
                                                             <button class="btn btn-block"><i
                                                                     class="fab fa-facebook-f"></i>
-                                                                {{trans('Dashboard/login_trans.signup_with_facebook')}}
+                                                                {{trans('login_trans.signup_with_facebook')}}
                                                             </button>
                                                         </div>
                                                         <div class="col-sm-6 mg-t-10 mg-sm-t-0">
                                                             <button class="btn btn-info btn-block"><i
-                                                                    class="fab fa-twitter"></i> {{trans('Dashboard/login_trans.signup_with_twitter')}}
+                                                                    class="fab fa-twitter"></i> {{trans('login_trans.signup_with_twitter')}}
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div class="main-signin-footer mt-5">
                                                     <p>
-                                                        <a href=""> {{trans('Dashboard/login_trans.forget_password')}}</a>
+                                                        <a href=""> {{trans('login_trans.forget_password')}}</a>
                                                     </p>
-                                                    <p> {{trans('Dashboard/login_trans.dont_have_an_account')}} <a
-                                                            href="{{ url('/' . $page='signup') }}"> {{trans('Dashboard/login_trans.create_an_account')}}
+                                                    <p> {{trans('login_trans.dont_have_an_account')}} <a
+                                                            href="{{ url('/' . $page='signup') }}"> {{trans('login_trans.create_an_account')}}
                                                         </a></p>
                                                 </div>
                                             </div>

@@ -53,7 +53,7 @@ Route::group(
 
         //---------------------------Doctor route--------------------------------------
 
-        Route::resource('Doctor', DoctorController::class);
+        Route::resource('Doctors', DoctorController::class);
 
         //---------------------------end doctor route-----------------------------------
     });
