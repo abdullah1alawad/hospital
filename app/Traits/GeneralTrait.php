@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 trait GeneralTrait
@@ -36,6 +37,11 @@ trait GeneralTrait
         }
 
         return null;
+    }
 
+    public function deleteAttachment($disk, $path, $id, $filename)
+    {
+        Storage::disk($disk)->delete($path);
+        Image::where('id', $id)->where('filename', $filename)->delete();
     }
 }

@@ -2,9 +2,9 @@
 
 return [
 
-    'Main' => 'hospital management',
-    'index' => 'general',
-    'sections' => 'sections',
+     'Main'=>'Hospital management software',
+     'index'=>'Home',
+     'sections'=>'Sections',
 
 
 ];
